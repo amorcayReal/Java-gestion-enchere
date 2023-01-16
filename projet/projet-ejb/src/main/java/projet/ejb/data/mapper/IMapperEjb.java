@@ -3,8 +3,8 @@ package projet.ejb.data.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import projet.commun.dto.DtoCompte;
-import projet.ejb.data.Compte;
+import projet.commun.dto.DtoUtilisateur;
+import projet.ejb.data.Utilisateur;
 
  
 @Mapper( componentModel = "cdi" )
@@ -15,8 +15,8 @@ public interface IMapperEjb {
 	
 	// Compte
 	
-	Compte map( DtoCompte source );
+	Utilisateur map( DtoUtilisateur source );
 	
-	DtoCompte map( Compte source );
+	DtoUtilisateur map( Utilisateur source );
 	
 }

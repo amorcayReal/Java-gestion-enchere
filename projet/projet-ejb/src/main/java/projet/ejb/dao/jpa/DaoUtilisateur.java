@@ -12,14 +12,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import projet.ejb.dao.IDaoCompte;
-import projet.ejb.data.Compte;
-
+import projet.ejb.dao.IDaoUtilisateur;
+import projet.ejb.data.Utilisateur;
 
 @Stateless
 @Local
 @TransactionAttribute( MANDATORY )
-public class DaoCompte implements IDaoCompte {
+public class DaoUtilisateur implements IDaoUtilisateur {
 
 	
 	// Champs
@@ -31,44 +30,44 @@ public class DaoCompte implements IDaoCompte {
 	// Actions
 	
 	@Override
-	public int inserer(Compte compte) {
-		em.persist(compte);
+	public int inserer(Utilisateur utilisateur) {
+		em.persist(utilisateur);
 		em.flush();
-		return compte.getId();
+		return utilisateur.getIdutilisateur();
 	}
 
 	@Override
-	public void modifier(Compte compte) {
-		em.merge( compte );
+	public void modifier(Utilisateur utilisateur) {
+		em.merge( utilisateur );
 	}
 
 	@Override
-	public void supprimer(int idCompte) {
-		em.remove( retrouver(idCompte) );
-	}
-
-	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
-	public Compte retrouver(int idCompte) {
-		return em.find( Compte.class, idCompte );
+	public void supprimer(int idUtilisateur) {
+		em.remove( retrouver(idUtilisateur) );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public List<Compte> listerTout() {
+	public Utilisateur retrouver(int idUtilisateur) {
+		return em.find( Utilisateur.class, idUtilisateur );
+	}
+
+	@Override
+	@TransactionAttribute( NOT_SUPPORTED )
+	public List<Utilisateur> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM Compte c ORDER BY c.pseudo";
-		var query = em.createQuery( jpql, Compte.class );
+		var jpql = "SELECT c FROM utilisateur c ORDER BY c.identifiant";
+		var query = em.createQuery( jpql, Utilisateur.class );
 		return query.getResultList();
 	}
 
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public Compte validerAuthentification( String pseudo, String motDePasse )  {
-	    var jpql = "SELECT c FROM Compte c WHERE c.pseudo=:pseudo AND c.motDePasse = :motDePasse ";
-	    var query = em.createQuery( jpql, Compte.class );
-	    query.setParameter( "pseudo", pseudo );
+	public Utilisateur validerAuthentification( String identifiant, String motDePasse )  {
+	    var jpql = "SELECT c FROM utilisateur c WHERE c.identifiant=:pseudo AND c.motdepasse = :motDePasse ";
+	    var query = em.createQuery( jpql, Utilisateur.class );
+	    query.setParameter( "identifiant", identifiant );
 	    query.setParameter( "motDePasse", motDePasse );
 	    try {
 	        return query.getSingleResult();

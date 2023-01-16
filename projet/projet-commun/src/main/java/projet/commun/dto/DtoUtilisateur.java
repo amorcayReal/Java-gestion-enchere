@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @SuppressWarnings("serial")
-public class DtoCompte implements Serializable  {
+public class DtoUtilisateur implements Serializable  {
 
 	
 	// Champs
@@ -24,10 +24,10 @@ public class DtoCompte implements Serializable  {
 	
 	// Constructeurs
 	
-	public DtoCompte() {
+	public DtoUtilisateur() {
 	}
 
-	public DtoCompte(int id, String pseudo, String motDePasse, String email ) {
+	public DtoUtilisateur(int id, String pseudo, String motDePasse, String email ) {
 		this.id = id;
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
