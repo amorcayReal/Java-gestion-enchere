@@ -4,7 +4,7 @@ import projet.commun.dto.DtoUtilisateur;
 
 public interface IServiceConnexion {
 
-	DtoUtilisateur	sessionUtilisateurOuvrir( String pseudo, String motDePasse );
+	DtoUtilisateur	sessionUtilisateurOuvrir( String identifiant, String motDePasse );
 
 	void		sessionUtilisateurFermer();
 

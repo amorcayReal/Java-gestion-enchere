@@ -1,8 +1,6 @@
 package projet.commun.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @SuppressWarnings("serial")
@@ -13,13 +11,13 @@ public class DtoUtilisateur implements Serializable  {
 	
 	private int			id;
 	
-	private String		pseudo;
+	private String		identifiant;
 	
 	private String		motDePasse;
 	
 	private String		email;
 	
-	private List<String> roles = new ArrayList<>();
+	private boolean roles;
 	
 	
 	// Constructeurs
@@ -27,9 +25,9 @@ public class DtoUtilisateur implements Serializable  {
 	public DtoUtilisateur() {
 	}
 
-	public DtoUtilisateur(int id, String pseudo, String motDePasse, String email ) {
+	public DtoUtilisateur(int id, String identifiant, String motDePasse, String email ) {
 		this.id = id;
-		this.pseudo = pseudo;
+		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.email = email;
 	}
@@ -45,12 +43,12 @@ public class DtoUtilisateur implements Serializable  {
 		this.id = id;
 	}
 
-	public String getPseudo() {
-		return pseudo;
+	public String getIdentifiant() {
+		return identifiant;
 	}
 
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+	public void setIdentifiant(String identifiant) {
+		this.identifiant = identifiant;
 	}
 
 	public String getMotDePasse() {
@@ -69,24 +67,11 @@ public class DtoUtilisateur implements Serializable  {
 		this.email = email;
 	}
 
-	public List<String> getRoles() {
+	public boolean getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(boolean roles) {
 		this.roles = roles;
-	}
-
-	
-	public boolean isInRole( String role ) {
-		
-		if ( role != null ) {
-			for ( String r : roles ) {
-				if ( r.equals(role) ) {
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 }

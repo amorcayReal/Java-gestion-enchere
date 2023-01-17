@@ -3,8 +3,8 @@ package projet.jsf.data.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-import projet.commun.dto.DtoCompte;
-import projet.jsf.data.Compte;
+import projet.commun.dto.DtoUtilisateur;
+import projet.jsf.data.Utilisateur;
 
 
 @Mapper( componentModel = "cdi" )
@@ -13,12 +13,12 @@ public interface IMapper {
 
 	// Compte
 	
-	Compte    map( DtoCompte source );
+	Utilisateur    map( DtoUtilisateur source );
 	
-	DtoCompte map( Compte source );
+	DtoUtilisateur map( Utilisateur source );
 	
-	Compte duplicate( Compte source );
+	Utilisateur duplicate( Utilisateur source );
 
-	Compte update( @MappingTarget Compte target, Compte source );
+	Utilisateur update( @MappingTarget Utilisateur target, Utilisateur source );
 
 }

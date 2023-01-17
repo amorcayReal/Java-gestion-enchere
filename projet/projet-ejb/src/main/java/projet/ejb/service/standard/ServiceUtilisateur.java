@@ -69,14 +69,14 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 
 		StringBuilder message = new StringBuilder();
 
-		if (dtoUtilisateur.getPseudo() == null || dtoUtilisateur.getPseudo().isEmpty()) {
+		if (dtoUtilisateur.getIdentifiant() == null || dtoUtilisateur.getIdentifiant().isEmpty()) {
 			message.append("\nLe pseudo est absent.");
-		} else if (dtoUtilisateur.getPseudo().length() < 3) {
+		} else if (dtoUtilisateur.getIdentifiant().length() < 3) {
 			message.append("\nLe pseudo est trop court.");
-		} else if (dtoUtilisateur.getPseudo().length() > 25) {
+		} else if (dtoUtilisateur.getIdentifiant().length() > 25) {
 			message.append("\nLe pseudo est trop long.");
-		} else if (!daoUtilisateur.verifierUnicitePseudo(dtoUtilisateur.getPseudo(), dtoUtilisateur.getId())) {
-			message.append("\nLe pseudo " + dtoUtilisateur.getPseudo() + " est déjà utilisé.");
+		} else if (!daoUtilisateur.verifierUnicitePseudo(dtoUtilisateur.getIdentifiant(), dtoUtilisateur.getId())) {
+			message.append("\nLe pseudo " + dtoUtilisateur.getIdentifiant() + " est déjà utilisé.");
 		}
 
 		if (dtoUtilisateur.getMotDePasse() == null || dtoUtilisateur.getMotDePasse().isEmpty()) {
