@@ -14,7 +14,7 @@ public interface IServiceUtilisateur {
 
 	void			supprimer( int idDtoUtilisateur ) throws ExceptionValidation;
 
-	DtoUtilisateur 		retrouver( int idDtoUtilisateur ) ;
+	DtoUtilisateur 		retrouver( int isDtoUtilisateur ) ;
 
 	List<DtoUtilisateur>	listerTout() ;
 

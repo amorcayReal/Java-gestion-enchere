@@ -29,8 +29,6 @@ public class Utilisateur implements Serializable {
 
 	private String prenom;
 
-	private Boolean role;
-
 	//bi-directional many-to-one association to Mouvement
 	@OneToMany(mappedBy="utilisateur")
 	private List<Mouvement> mouvements;
@@ -40,6 +38,12 @@ public class Utilisateur implements Serializable {
 	@JoinColumn(name="idenfant")
 	private Enfant enfant;
 
+	//bi-directional many-to-one association to Enfant
+	@ManyToOne
+	@JoinColumn(name="idrole")
+	private Role role;
+
+	
 	public Utilisateur() {
 	}
 
@@ -99,11 +103,11 @@ public class Utilisateur implements Serializable {
 		this.prenom = prenom;
 	}
 
-	public Boolean getRole() {
+	public Role getRole() {
 		return this.role;
 	}
 
-	public void setRole(Boolean role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 

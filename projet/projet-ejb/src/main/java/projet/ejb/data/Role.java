@@ -19,7 +19,6 @@ public class Role implements Serializable {
 
 	private Boolean admin;
 
-	private Integer niveau;
 
 	public Role() {
 	}
@@ -38,13 +37,5 @@ public class Role implements Serializable {
 
 	public void setAdmin(Boolean admin) {
 		this.admin = admin;
-	}
-
-	public Integer getNiveau() {
-		return this.niveau;
-	}
-
-	public void setNiveau(Integer niveau) {
-		this.niveau = niveau;
 	}
 }

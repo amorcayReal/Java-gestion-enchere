@@ -12,8 +12,8 @@ public class Utilisateur implements Serializable  {
 
 	
 	// Champs
-	
-	Integer		idrole;
+		
+	private int idRole;	
 	
 	private float paiement;
 	
@@ -38,7 +38,6 @@ public class Utilisateur implements Serializable  {
 	@Size(max=25, message = "Valeur trop longue pour le mot de passe : 25 car. maxi" )
 	private String		motDePasse;
 	
-	private boolean role;	
 
 	
 	// Constructeurs
@@ -47,29 +46,17 @@ public class Utilisateur implements Serializable  {
 	}
 
 
-	public Utilisateur(Integer idrole, float paiement, String email, String prenom, String nom, String identifiant,
-			String motDePasse, boolean role) {
+	public Utilisateur(float paiement, String email, String prenom, String nom, String identifiant,
+			String motDePasse, int role) {
 		super();
-		this.idrole = idrole;
 		this.paiement = paiement;
 		this.email = email;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
-		this.role = role;
+		this.idRole = role;
 	}
-
-
-	public Integer getIdrole() {
-		return idrole;
-	}
-
-
-	public void setIdrole(Integer idrole) {
-		this.idrole = idrole;
-	}
-
 
 	public float getPaiement() {
 		return paiement;
@@ -131,19 +118,19 @@ public class Utilisateur implements Serializable  {
 	}
 
 
-	public boolean isRole() {
-		return role;
+	public int getRole() {
+		return idRole;
 	}
 
 
-	public void setRole(boolean role) {
-		this.role = role;
+	public void setRole(int role) {
+		this.idRole = role;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, identifiant, idrole, motDePasse, nom, paiement, prenom, role);
+		return Objects.hash(email, identifiant, motDePasse, nom, paiement, prenom, idRole);
 	}
 
 
@@ -157,10 +144,10 @@ public class Utilisateur implements Serializable  {
 			return false;
 		Utilisateur other = (Utilisateur) obj;
 		return Objects.equals(email, other.email) && Objects.equals(identifiant, other.identifiant)
-				&& Objects.equals(idrole, other.idrole) && Objects.equals(motDePasse, other.motDePasse)
+				&& Objects.equals(motDePasse, other.motDePasse)
 				&& Objects.equals(nom, other.nom)
 				&& Float.floatToIntBits(paiement) == Float.floatToIntBits(other.paiement)
-				&& Objects.equals(prenom, other.prenom) && role == other.role;
+				&& Objects.equals(prenom, other.prenom);
 	}
 	
 

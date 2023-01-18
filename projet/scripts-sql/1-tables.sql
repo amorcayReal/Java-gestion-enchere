@@ -13,7 +13,6 @@ GRANT ALL PRIVILEGES ON SCHEMA projet TO projet;
 CREATE TABLE Role (
 	idrole INT NOT NULL,
 	admin BOOLEAN NOT NULL,
-	niveau INT NOT NULL,
 	PRIMARY KEY (idrole)
 );
 
@@ -66,6 +65,7 @@ CREATE TABLE enfant (
 CREATE TABLE utilisateur (
 	idutilisateur INT NOT NULL,
 	idenfant INT,
+	idrole INT,
 	role BOOLEAN NOT NULL,
 	identifiant varchar(50) NOT NULL,
 	motdepasse varchar(50) NOT NULL,
@@ -74,6 +74,7 @@ CREATE TABLE utilisateur (
 	email varchar(50) NOT NULL,
 	paiement FLOAT,
 	PRIMARY KEY (idutilisateur),
+	FOREIGN KEY (idrole) REFERENCES Role(idrole),
 	FOREIGN KEY (idenfant) REFERENCES enfant(idenfant)
 );
 

@@ -59,7 +59,7 @@ public class ModelUtilisateur implements Serializable {
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoUtilisateur dto = serviceUtilisateur.retrouver( courant.getIdrole() ); 
+			DtoUtilisateur dto = serviceUtilisateur.retrouver( courant.getRole() ); 
 			if ( dto == null ) {
 				UtilJsf.messageError( "Le compte demandé n'existe pas" );
 				return "test/liste";

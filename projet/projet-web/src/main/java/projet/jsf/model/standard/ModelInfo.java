@@ -3,7 +3,6 @@ package projet.jsf.model.standard;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-
 @RequestScoped
 @Named
 public class ModelInfo {
@@ -14,7 +13,6 @@ public class ModelInfo {
 	
 	private String		texte;
 
-	
 	// Getters & Setters
 	
 	public String getTitre() {

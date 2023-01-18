@@ -17,7 +17,7 @@ public class DtoUtilisateur implements Serializable  {
 	
 	private String		email;
 	
-	private boolean roles;
+	private int role;
 	
 	
 	// Constructeurs
@@ -25,11 +25,12 @@ public class DtoUtilisateur implements Serializable  {
 	public DtoUtilisateur() {
 	}
 
-	public DtoUtilisateur(int id, String identifiant, String motDePasse, String email ) {
+	public DtoUtilisateur(int id, String identifiant, String motDePasse, String email, int roles ) {
 		this.id = id;
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.email = email;
+		this.role = roles;
 	}
 	
 	
@@ -67,7 +68,7 @@ public class DtoUtilisateur implements Serializable  {
 		this.email = email;
 	}
 
-	public boolean getRoles() {
+	public int getRoles() {
 		return roles;
 	}
 
