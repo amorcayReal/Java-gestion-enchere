@@ -65,7 +65,7 @@ CREATE TABLE enfant (
 
 CREATE TABLE utilisateur (
 	idutilisateur INT NOT NULL,
-	idenfant INT NOT NULL,
+	idenfant INT,
 	role BOOLEAN NOT NULL,
 	identifiant varchar(50) NOT NULL,
 	motdepasse varchar(50) NOT NULL,
@@ -73,9 +73,7 @@ CREATE TABLE utilisateur (
 	prenom varchar(50) NOT NULL,
 	email varchar(50) NOT NULL,
 	paiement FLOAT,
-	idrole INT NOT NULL,
 	PRIMARY KEY (idutilisateur),
-	FOREIGN KEY (idrole) REFERENCES Role(idrole),
 	FOREIGN KEY (idenfant) REFERENCES enfant(idenfant)
 );
 

@@ -1,8 +1,6 @@
 package projet.jsf.data;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.Email;

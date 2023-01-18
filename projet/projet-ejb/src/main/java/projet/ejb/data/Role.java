@@ -21,10 +21,6 @@ public class Role implements Serializable {
 
 	private Integer niveau;
 
-	//bi-directional many-to-one association to Utilisateur
-	@OneToMany(mappedBy="roleBean")
-	private List<Utilisateur> utilisateurs;
-
 	public Role() {
 	}
 
@@ -51,27 +47,4 @@ public class Role implements Serializable {
 	public void setNiveau(Integer niveau) {
 		this.niveau = niveau;
 	}
-
-	public List<Utilisateur> getUtilisateurs() {
-		return this.utilisateurs;
-	}
-
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
-	}
-
-	public Utilisateur addUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().add(utilisateur);
-		utilisateur.setRoleBean(this);
-
-		return utilisateur;
-	}
-
-	public Utilisateur removeUtilisateur(Utilisateur utilisateur) {
-		getUtilisateurs().remove(utilisateur);
-		utilisateur.setRoleBean(null);
-
-		return utilisateur;
-	}
-
 }

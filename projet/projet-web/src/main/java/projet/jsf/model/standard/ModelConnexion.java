@@ -38,7 +38,7 @@ public class ModelConnexion {
 	}
 
 	
-	// Actons
+	// Actions
 	
 	public String connect() {
 	    

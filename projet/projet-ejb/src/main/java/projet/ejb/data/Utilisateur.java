@@ -40,11 +40,6 @@ public class Utilisateur implements Serializable {
 	@JoinColumn(name="idenfant")
 	private Enfant enfant;
 
-	//bi-directional many-to-one association to Role
-	@ManyToOne
-	@JoinColumn(name="idrole")
-	private Role roleBean;
-
 	public Utilisateur() {
 	}
 
@@ -140,14 +135,6 @@ public class Utilisateur implements Serializable {
 
 	public void setEnfant(Enfant enfant) {
 		this.enfant = enfant;
-	}
-
-	public Role getRoleBean() {
-		return this.roleBean;
-	}
-
-	public void setRoleBean(Role roleBean) {
-		this.roleBean = roleBean;
 	}
 
 }

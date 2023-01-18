@@ -65,7 +65,7 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
 	public Utilisateur validerAuthentification( String identifiant, String motDePasse )  {
-	    var jpql = "SELECT c FROM utilisateur c WHERE c.identifiant=:pseudo AND c.motdepasse = :motDePasse ";
+	    var jpql = "SELECT c FROM Utilisateur c WHERE c.identifiant=:identifiant AND c.motdepasse = :motDePasse ";
 	    var query = em.createQuery( jpql, Utilisateur.class );
 	    query.setParameter( "identifiant", identifiant );
 	    query.setParameter( "motDePasse", motDePasse );
