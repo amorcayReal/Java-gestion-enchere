@@ -11,16 +11,15 @@ import projet.jsf.data.Utilisateur;
 public class CompteActif extends Utilisateur {
 	
 	public boolean isLoggedIn() {
-		System.out.println(isRole());
 		return getIdentifiant() != null;
 	}	
 	
 	public boolean isUtilisateur() {
-		return isLoggedIn() && !isRole();
+		return isLoggedIn() && getRole() == 1;
 	}
 	
 	public boolean isAdmininstrateur() {
-		return isLoggedIn() && isRole();
+		return isLoggedIn() && getRole() == 2;
 	}
 
 	public String disconnect() {

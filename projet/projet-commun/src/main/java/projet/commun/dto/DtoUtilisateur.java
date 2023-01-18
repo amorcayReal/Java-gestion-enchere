@@ -69,10 +69,10 @@ public class DtoUtilisateur implements Serializable  {
 	}
 
 	public int getRoles() {
-		return roles;
+		return role;
 	}
 
-	public void setRoles(boolean roles) {
-		this.roles = roles;
+	public void setRoles(int roles) {
+		this.role = roles;
 	}
 }
