@@ -2,7 +2,8 @@ package projet.jsf.util;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-
+import static projet.commun.dto.Roles.ADMINISTRATEUR;
+import static projet.commun.dto.Roles.UTILISATEUR;
 import projet.jsf.data.Utilisateur;
 
 @SuppressWarnings("serial")
@@ -15,11 +16,11 @@ public class CompteActif extends Utilisateur {
 	}	
 	
 	public boolean isUtilisateur() {
-		return isLoggedIn() && getRole() == 1;
+		return isLoggedIn() && isInRole ( UTILISATEUR );
 	}
 	
 	public boolean isAdmininstrateur() {
-		return isLoggedIn() && getRole() == 2;
+		return isLoggedIn() && isInRole( ADMINISTRATEUR );
 	}
 
 	public String disconnect() {

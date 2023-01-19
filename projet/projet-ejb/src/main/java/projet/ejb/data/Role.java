@@ -15,27 +15,34 @@ public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Integer idrole;
+	private Integer idutilisateur;
 
-	private Boolean admin;
+	@Column(name = "role")
+	private String role;
 
 
 	public Role() {
 	}
 
-	public Integer getIdrole() {
-		return this.idrole;
+
+	public Integer getIdutilisateur() {
+		return idutilisateur;
 	}
 
-	public void setIdrole(Integer idrole) {
-		this.idrole = idrole;
+
+	public void setIdutilisateur(Integer idutilisateur) {
+		this.idutilisateur = idutilisateur;
 	}
 
-	public Boolean getAdmin() {
-		return this.admin;
+
+	public String getRole() {
+		return role;
 	}
 
-	public void setAdmin(Boolean admin) {
-		this.admin = admin;
+
+	public void setRole(String role) {
+		this.role = role;
 	}
+
+
 }

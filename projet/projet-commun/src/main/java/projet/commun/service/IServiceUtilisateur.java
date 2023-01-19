@@ -12,10 +12,9 @@ public interface IServiceUtilisateur {
 
 	void			modifier( DtoUtilisateur dtoUtilisateur ) throws ExceptionValidation; 
 
-	void			supprimer( int idDtoUtilisateur ) throws ExceptionValidation;
+	void			supprimer( int idUtilisateur ) throws ExceptionValidation;
 
-	DtoUtilisateur 		retrouver( int isDtoUtilisateur ) ;
+	DtoUtilisateur 		retrouver( int idUtilisateur ) ;
 
 	List<DtoUtilisateur>	listerTout() ;
-
 }

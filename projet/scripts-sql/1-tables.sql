@@ -10,12 +10,6 @@ GRANT ALL PRIVILEGES ON SCHEMA projet TO projet;
 
 -- Tables
 
-CREATE TABLE Role (
-	idrole INT NOT NULL,
-	admin BOOLEAN NOT NULL,
-	PRIMARY KEY (idrole)
-);
-
 CREATE TABLE salle (
 	idniveau INT NOT NULL,
 	niveau INT NOT NULL,
@@ -63,20 +57,24 @@ CREATE TABLE enfant (
 );
 
 CREATE TABLE utilisateur (
-	idutilisateur INT NOT NULL,
+	idutilisateur INT,
 	idenfant INT,
-	idrole INT,
-	role BOOLEAN NOT NULL,
-	identifiant varchar(50) NOT NULL,
-	motdepasse varchar(50) NOT NULL,
-	nom varchar(50) NOT NULL,
-	prenom varchar(50) NOT NULL,
-	email varchar(50) NOT NULL,
+	identifiant varchar(50),
+	motdepasse varchar(50),
+	nom varchar(50),
+	prenom varchar(50),
+	email varchar(50),
 	paiement FLOAT,
 	PRIMARY KEY (idutilisateur),
-	FOREIGN KEY (idrole) REFERENCES Role(idrole),
 	FOREIGN KEY (idenfant) REFERENCES enfant(idenfant)
 );
+
+CREATE TABLE Role (
+	idutilisateur INT NOT NULL,
+	role VARCHAR(20) NOT NULL,
+	CHECK( role IN ('ADMINISTRATEUR','UTILISATEUR') ),	
+	FOREIGN KEY (idutilisateur) REFERENCES utilisateur (idutilisateur),
+	PRIMARY KEY (idutilisateur, role));
 
 CREATE TABLE mouvement (
 	idmouvement INT NOT NULL,

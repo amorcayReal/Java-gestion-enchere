@@ -8,8 +8,10 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.xml.crypto.Data;
 
 import projet.commun.dto.DtoUtilisateur;
+import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceUtilisateur;
 import projet.jsf.data.Utilisateur;
 import projet.jsf.data.mapper.IMapper;
@@ -33,7 +35,6 @@ public class ModelUtilisateur implements Serializable {
 	
 	@Inject
 	private IMapper			mapper;
-
 	
 	// Getters 
 	
@@ -59,7 +60,7 @@ public class ModelUtilisateur implements Serializable {
 	
 	public String actualiserCourant() {
 		if ( courant != null ) {
-			DtoUtilisateur dto = serviceUtilisateur.retrouver( courant.getRole() ); 
+			DtoUtilisateur dto = serviceUtilisateur.retrouver( courant.getId() ); 
 			if ( dto == null ) {
 				UtilJsf.messageError( "Le compte demandé n'existe pas" );
 				return "test/liste";
@@ -70,7 +71,20 @@ public class ModelUtilisateur implements Serializable {
 		return null;
 	}
 	
-	
 	// Actions
-
+	
+	public String validerMiseAJour() {
+		try {
+			if ( courant.getId() == null) {
+				serviceUtilisateur.inserer( mapper.map(courant) );
+			} else {
+				serviceUtilisateur.modifier( mapper.map(courant) );
+			}
+			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
+			return "liste";
+		} catch (ExceptionValidation e) {
+			UtilJsf.messageError(e);
+			return null;
+		}
+	}
 }

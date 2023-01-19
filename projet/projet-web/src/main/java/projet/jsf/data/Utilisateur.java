@@ -1,6 +1,8 @@
 package projet.jsf.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.validation.constraints.Email;
@@ -13,7 +15,9 @@ public class Utilisateur implements Serializable  {
 	
 	// Champs
 		
-	private int idRole;	
+	Integer		id;
+	
+	private List<String> role = new ArrayList<>();	
 	
 	private float paiement;
 	
@@ -45,94 +49,85 @@ public class Utilisateur implements Serializable  {
 	public Utilisateur() {
 	}
 
-
-	public Utilisateur(float paiement, String email, String prenom, String nom, String identifiant,
-			String motDePasse, int role) {
+	public Utilisateur(Integer id, float paiement, String email,String prenom,String nom, String identifiant, String motDePasse) {
 		super();
+		this.id = id;
 		this.paiement = paiement;
 		this.email = email;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
-		this.idRole = role;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public boolean isInRole( String role ) {
+		return role.contains( role );
+	}
+
+	public void setRole(List<String> role) {
+		this.role = role;
 	}
 
 	public float getPaiement() {
 		return paiement;
 	}
 
-
 	public void setPaiement(float paiement) {
 		this.paiement = paiement;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getPrenom() {
 		return prenom;
 	}
 
-
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
 
 	public String getNom() {
 		return nom;
 	}
 
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 
 	public String getIdentifiant() {
 		return identifiant;
 	}
 
-
 	public void setIdentifiant(String identifiant) {
 		this.identifiant = identifiant;
 	}
-
 
 	public String getMotDePasse() {
 		return motDePasse;
 	}
 
-
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
 
-
-	public int getRole() {
-		return idRole;
-	}
-
-
-	public void setRole(int role) {
-		this.idRole = role;
-	}
-
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, identifiant, motDePasse, nom, paiement, prenom, idRole);
+		return Objects.hash(email, id, identifiant, motDePasse, nom, paiement, prenom, role);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -143,12 +138,11 @@ public class Utilisateur implements Serializable  {
 		if (getClass() != obj.getClass())
 			return false;
 		Utilisateur other = (Utilisateur) obj;
-		return Objects.equals(email, other.email) && Objects.equals(identifiant, other.identifiant)
-				&& Objects.equals(motDePasse, other.motDePasse)
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id)
+				&& Objects.equals(identifiant, other.identifiant) && Objects.equals(motDePasse, other.motDePasse)
 				&& Objects.equals(nom, other.nom)
 				&& Float.floatToIntBits(paiement) == Float.floatToIntBits(other.paiement)
-				&& Objects.equals(prenom, other.prenom);
+				&& Objects.equals(prenom, other.prenom) && Objects.equals(role, other.role);
 	}
-	
 
 }

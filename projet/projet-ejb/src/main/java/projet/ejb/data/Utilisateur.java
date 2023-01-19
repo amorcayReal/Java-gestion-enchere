@@ -1,8 +1,19 @@
 package projet.ejb.data;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import static javax.persistence.FetchType.EAGER;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -28,7 +39,12 @@ public class Utilisateur implements Serializable {
 	private double paiement;
 
 	private String prenom;
-
+	
+	@ElementCollection( fetch = EAGER )
+	@CollectionTable( name = "role", joinColumns = @JoinColumn( name = "idutilisateur" ) )
+	@Column( name = "role")
+	private List<String> role = new ArrayList<>();	
+	
 	//bi-directional many-to-one association to Mouvement
 	@OneToMany(mappedBy="utilisateur")
 	private List<Mouvement> mouvements;
@@ -37,18 +53,27 @@ public class Utilisateur implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idenfant")
 	private Enfant enfant;
-
-	//bi-directional many-to-one association to Enfant
-	@ManyToOne
-	@JoinColumn(name="idrole")
-	private Role role;
-
 	
 	public Utilisateur() {
 	}
 
+	public Utilisateur(Integer idutilisateur, String email, String identifiant, String motdepasse, String nom,
+			double paiement, String prenom, List<String> roles, List<Mouvement> mouvements, Enfant enfant) {
+		super();
+		this.idutilisateur = idutilisateur;
+		this.email = email;
+		this.identifiant = identifiant;
+		this.motdepasse = motdepasse;
+		this.nom = nom;
+		this.paiement = paiement;
+		this.prenom = prenom;
+		this.role = roles;
+		this.mouvements = mouvements;
+		this.enfant = enfant;
+	}
+
 	public Integer getIdutilisateur() {
-		return this.idutilisateur;
+		return idutilisateur;
 	}
 
 	public void setIdutilisateur(Integer idutilisateur) {
@@ -56,7 +81,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
 	public void setEmail(String email) {
@@ -64,7 +89,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getIdentifiant() {
-		return this.identifiant;
+		return identifiant;
 	}
 
 	public void setIdentifiant(String identifiant) {
@@ -72,7 +97,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getMotdepasse() {
-		return this.motdepasse;
+		return motdepasse;
 	}
 
 	public void setMotdepasse(String motdepasse) {
@@ -80,7 +105,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getNom() {
-		return this.nom;
+		return nom;
 	}
 
 	public void setNom(String nom) {
@@ -88,7 +113,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public double getPaiement() {
-		return this.paiement;
+		return paiement;
 	}
 
 	public void setPaiement(double paiement) {
@@ -96,49 +121,40 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getPrenom() {
-		return this.prenom;
+		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
-	public Role getRole() {
-		return this.role;
+	public List<String> getRoles() {
+		return role;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoles(List<String> roles) {
+		this.role = roles;
 	}
 
 	public List<Mouvement> getMouvements() {
-		return this.mouvements;
+		return mouvements;
 	}
 
 	public void setMouvements(List<Mouvement> mouvements) {
 		this.mouvements = mouvements;
 	}
 
-	public Mouvement addMouvement(Mouvement mouvement) {
-		getMouvements().add(mouvement);
-		mouvement.setUtilisateur(this);
-
-		return mouvement;
-	}
-
-	public Mouvement removeMouvement(Mouvement mouvement) {
-		getMouvements().remove(mouvement);
-		mouvement.setUtilisateur(null);
-
-		return mouvement;
-	}
-
 	public Enfant getEnfant() {
-		return this.enfant;
+		return enfant;
 	}
 
 	public void setEnfant(Enfant enfant) {
 		this.enfant = enfant;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 
 }

@@ -54,7 +54,7 @@ public class ModelConnexion {
 //			}
 
 	    	utilisateurActif.setIdentifiant(dto.getIdentifiant());
-	    	utilisateurActif.setRole(dto.getRoles());
+	    	utilisateurActif.setRole(dto.getRole());
 	        
 	    	modelInfo.setTitre( "Bienvenue" );
 	    	modelInfo.setTexte( "Vous êtes connecté en tant que '" + courant.getIdentifiant() +"'.");

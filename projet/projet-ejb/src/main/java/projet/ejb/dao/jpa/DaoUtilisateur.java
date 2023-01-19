@@ -56,7 +56,7 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 	@TransactionAttribute( NOT_SUPPORTED )
 	public List<Utilisateur> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM utilisateur c ORDER BY c.identifiant";
+		var jpql = "SELECT c FROM Utilisateur c ORDER BY c.identifiant";
 		var query = em.createQuery( jpql, Utilisateur.class );
 		return query.getResultList();
 	}
@@ -80,7 +80,7 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
 	public boolean verifierUnicitePseudo( String pseudo, int idCompte )  {
-	    var jpql = "SELECT COUNT(c) FROM Compte c WHERE c.pseudo=:pseudo AND c.id <> :idCompte ";
+	    var jpql = "SELECT COUNT(c) FROM Utilisateur c WHERE c.identifiant=:pseudo AND c.id <> :idCompte ";
 	    var query = em.createQuery( jpql, Long.class );
 	    query.setParameter( "pseudo", pseudo );
 	    query.setParameter( "idCompte", idCompte );

@@ -12,7 +12,11 @@ DELETE FROM enfant;
 DELETE FROM cours;
 
 
-INSERT INTO utilisateur (idutilisateur, idenfant, role, identifiant, motdepasse, nom, prenom, email, paiement)
-VALUES (1, null, true, 'admin', 'admin', 'admin', 'admin', 'admin@3il.fr', 0),
-(2, null, false, 'billy', '123', 'smith', 'billy', 'billy@3il.fr', 500)
+INSERT INTO utilisateur (idutilisateur, idenfant, identifiant, motdepasse, nom, prenom, email, paiement)VALUES 
+(1, null, 'admin', 'admin', 'admin', 'admin', 'admin@3il.fr', 0),
+(2, null, 'billy', '123', 'smith', 'billy', 'billy@3il.fr', 500);
 
+INSERT INTO role (idutilisateur, role) VALUES 
+( 1, 'ADMINISTRATEUR' ),
+( 1, 'UTILISATEUR' ),
+( 2, 'UTILISATEUR' );

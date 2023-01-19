@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/template/page-standard.xhtml"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets">>
+
+<h1>Liste Utilisateur</h1>
+
+		<h:form>
+
+			<h:dataTable styleClass="liste" value="#{modelUtilisateur.liste}"
+				var="item" rowClasses="impair, pair"
+				columnClasses="center,left,right,center,left,left,left,center">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nom" />
+					</f:facet>
+						#{item.nom} 
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Prenom" />
+					</f:facet>
+						#{item.prenom} 
+				</h:column>
+
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Paiement à réaliser" />
+					</f:facet>
+						#{item.paiement} 
+				</h:column>
+	</ui:define>
+	
+
+</ui:composition>

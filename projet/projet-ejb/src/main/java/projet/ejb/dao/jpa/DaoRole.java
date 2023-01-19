@@ -33,7 +33,7 @@ public class DaoRole implements IDaoRole {
 	public int inserer(Role role) {
 		em.persist(role);
 		em.flush();
-		return role.getIdrole();
+		return role.getIdutilisateur();
 	}
 
 	@Override
@@ -42,14 +42,14 @@ public class DaoRole implements IDaoRole {
 	}
 
 	@Override
-	public void supprimer(int idRole) {
-		em.remove( retrouver(idRole) );
+	public void supprimer(int Idutilisateur) {
+		em.remove( retrouver(Idutilisateur) );
 	}
 
 	@Override
 	@TransactionAttribute( NOT_SUPPORTED )
-	public Role retrouver(int idCompte) {
-		return em.find( Role.class, idCompte );
+	public Role retrouver(int Idutilisateur) {
+		return em.find( Role.class, Idutilisateur );
 	}
 
 	@Override
